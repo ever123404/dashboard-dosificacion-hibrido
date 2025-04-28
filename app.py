@@ -331,6 +331,7 @@ st.markdown(
         <div style='font-size: 0.9rem; margin-bottom: 1rem;'>Responsable de la Investigación</div>
         <div style='margin-bottom: 0.5rem;'>Dr. Glicerio Eduardo Torres Carranza</div>
         <div style='font-size: 0.9rem;'>Asesor de Investigación</div>
+        <div style='font-size: 0.8rem; margin-top: 2rem; opacity: 0.8;'>© 2025 Universidad Nacional de Cajamarca. Proyecto de Investigación. Todos los derechos reservados.</div>
     </div>
     """,
     unsafe_allow_html=True
