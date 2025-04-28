@@ -14,7 +14,7 @@ from skfuzzy import control as ctrl
 
 # --- Configuración de página ---
 st.set_page_config(
-    page_title="Sistema de Dosificación Óptima | SEDACAJ",
+    page_title="Dosificación de Coagulante - EPS SEDACAJ | El Milagro",
     layout="wide",
     page_icon="💧"
 )
@@ -22,11 +22,11 @@ st.set_page_config(
 st.markdown(
     """
     <div style='background: linear-gradient(90deg, #003366 0%, #336699 100%); padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem; text-align: center; color: white;'>
-        <h1 style='margin-bottom: 0.5rem;'>Sistema de Dosificación de Coagulante (Sulfato de Aluminio)</h1>
+        <h1 style='margin-bottom: 0.5rem;'>Sistema de Dosificación</h1>
         <h2 style='margin-bottom: 0.2rem;'>EPS SEDACAJ S.A.</h2>
         <h3 style='margin-bottom: 0.2rem;'>Planta de Tratamiento:</h3>
         <h2 style='font-style: italic; margin-bottom: 0.2rem;'>"El Milagro"</h2>
-        <h3 style='margin-bottom: 0;'>Cajamarca</h3>
+        <h2 style='margin-bottom: 0;'>Cajamarca</h2>
     </div>
     """,
     unsafe_allow_html=True
@@ -268,8 +268,8 @@ except Exception as e:
     st.stop()
 
 # --- Encabezado general ---
-st.title("💧 Sistema de Dosificación Óptima de Coagulantes")
-st.subheader("EPS SEDACAJ - Planta El Milagro")
+st.title("💧 Coagulante:")
+st.subheader("Sulfato de Aluminio")
 
 # --- Formulario de entrada de parámetros ---
 st.header("📋 Ingreso de parámetros del agua")
@@ -324,7 +324,7 @@ else:
 st.markdown(
     """
     <div style='background-color: #003366; padding: 1.5rem; border-radius: 0.75rem; margin-top: 3rem; text-align: center; color: white; font-size: 1rem;'>
-        <div style='font-weight: 600; margin-bottom: 0.5rem;'>Universidad Nacional de Cajamarca</div>
+        <div style='font-weight: 600; margin-bottom: 0.5rem;'>UNIVERSIDAD NACIONAL DE CAJAMARCA</div>
         <div style='font-weight: 500; margin-bottom: 1rem;'>Escuela de Posgrado - 2025</div>
         <div style='font-weight: 600; margin-bottom: 0.5rem;'>Investigadores:</div>
         <div style='margin-bottom: 0.5rem;'>MSc. Ever Rojas Huamán</div>
