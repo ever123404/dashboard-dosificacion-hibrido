@@ -18,7 +18,17 @@ st.set_page_config(
     layout="wide",
     page_icon="💧"
 )
-
+# --- Encabezado bonito ---
+st.markdown(
+    """
+    <div style='background: linear-gradient(90deg, #003366 0%, #336699 100%); padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem; text-align: center; color: white;'>
+        <h1 style='margin-bottom: 0.5rem;'>Sistema de Dosificación Óptima</h1>
+        <h3 style='margin-bottom: 0;'>Planta de Tratamiento El Milagro</h3>
+        <h3 style='margin-top: 0;'>EPS SEDACAJ S.A.</h3>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 # --- Definición de colores ---
 COLOR_PRIMARIO = "#003366"
 COLOR_SECUNDARIO = "#336699"
