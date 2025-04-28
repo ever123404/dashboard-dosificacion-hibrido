@@ -18,13 +18,15 @@ st.set_page_config(
     layout="wide",
     page_icon="💧"
 )
-# --- Encabezado bonito ---
+# --- Encabezado corregido ---
 st.markdown(
     """
     <div style='background: linear-gradient(90deg, #003366 0%, #336699 100%); padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem; text-align: center; color: white;'>
-        <h1 style='margin-bottom: 0.5rem;'>Sistema de Dosificación Óptima</h1>
-        <h3 style='margin-bottom: 0;'>Planta de Tratamiento El Milagro</h3>
-        <h3 style='margin-top: 0;'>EPS SEDACAJ S.A.</h3>
+        <h1 style='margin-bottom: 0.5rem;'>Sistema de Dosificación de Coagulante (Sulfato de Aluminio)</h1>
+        <h2 style='margin-bottom: 0.2rem;'>EPS SEDACAJ S.A.</h2>
+        <h3 style='margin-bottom: 0.2rem;'>Planta de Tratamiento:</h3>
+        <h2 style='font-style: italic; margin-bottom: 0.2rem;'>"El Milagro"</h2>
+        <h3 style='margin-bottom: 0;'>Cajamarca</h3>
     </div>
     """,
     unsafe_allow_html=True
@@ -318,23 +320,19 @@ if historial.empty:
     st.info("No hay datos históricos registrados.")
 else:
     st.dataframe(historial, use_container_width=True)
-# --- Pie de página correcto ---
+# --- Pie de página corregido ---
 st.markdown(
     """
     <div style='background-color: #003366; padding: 1.5rem; border-radius: 0.75rem; margin-top: 3rem; text-align: center; color: white; font-size: 1rem;'>
-        <div style='font-weight: 600; margin-bottom: 0.5rem;'>Sistema de Dosificación Óptima de Sulfato de Aluminio</div>
-        <div style='display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem; margin-top: 1rem; margin-bottom: 1rem;'>
-            <div>
-                <div style='font-size: 0.9rem; color: rgba(255,255,255,0.8);'>Investigador Principal</div>
-                <div style='font-size: 1.1rem; font-weight: 500;'>MSc. Ever Rojas Huamán</div>
-            </div>
-            <div>
-                <div style='font-size: 0.9rem; color: rgba(255,255,255,0.8);'>Asesor de Investigación</div>
-                <div style='font-size: 1.1rem; font-weight: 500;'>Dr. Glicerio Eduardo Torres Carranza</div>
-            </div>
-        </div>
-        <div style='font-size: 0.9rem; opacity: 0.9;'>Universidad Nacional de Cajamarca • Escuela de Posgrado • 2025</div>
+        <div style='font-weight: 600; margin-bottom: 0.5rem;'>Universidad Nacional de Cajamarca</div>
+        <div style='font-weight: 500; margin-bottom: 1rem;'>Escuela de Posgrado - 2025</div>
+        <div style='font-weight: 600; margin-bottom: 0.5rem;'>Investigadores:</div>
+        <div style='margin-bottom: 0.5rem;'>MSc. Ever Rojas Huamán</div>
+        <div style='font-size: 0.9rem; margin-bottom: 1rem;'>Responsable de la Investigación</div>
+        <div style='margin-bottom: 0.5rem;'>Dr. Glicerio Eduardo Torres Carranza</div>
+        <div style='font-size: 0.9rem;'>Asesor de Investigación</div>
     </div>
     """,
     unsafe_allow_html=True
 )
+
