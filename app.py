@@ -109,12 +109,33 @@ class ModeloHibridoDosificacion:
         dosis['alta'] = fuzz.trimf(rango_dosis, [70, 100, 150])
         dosis['muy_alta'] = fuzz.trapmf(rango_dosis, [130, 200, 300, 300])
 
+        # --- Definir reglas difusas corregidas ---
         rules = [
+            # Reglas principales basadas en turbiedad y pH
             ctrl.Rule(turbiedad['muy_baja'] & ph['neutro'], dosis['muy_baja']),
+            ctrl.Rule(turbiedad['muy_baja'] & ph['acido'], dosis['baja']),
+            ctrl.Rule(turbiedad['muy_baja'] & ph['alcalino'], dosis['baja']),
+    
             ctrl.Rule(turbiedad['baja'] & ph['neutro'], dosis['baja']),
+            ctrl.Rule(turbiedad['baja'] & ph['acido'], dosis['media']),
+            ctrl.Rule(turbiedad['baja'] & ph['alcalino'], dosis['media']),
+    
             ctrl.Rule(turbiedad['media'] & ph['neutro'], dosis['media']),
+            ctrl.Rule(turbiedad['media'] & ph['acido'], dosis['alta']),
+            ctrl.Rule(turbiedad['media'] & ph['alcalino'], dosis['alta']),
+    
             ctrl.Rule(turbiedad['alta'] & ph['neutro'], dosis['alta']),
+            ctrl.Rule(turbiedad['alta'] & ph['acido'], dosis['muy_alta']),
+            ctrl.Rule(turbiedad['alta'] & ph['alcalino'], dosis['muy_alta']),
+    
             ctrl.Rule(turbiedad['muy_alta'], dosis['muy_alta']),
+
+            # --- Nuevas reglas específicas que incluyen caudal ---
+            ctrl.Rule(caudal['alto'] & turbiedad['alta'], dosis['muy_alta']),
+            ctrl.Rule(caudal['bajo'] & turbiedad['baja'], dosis['muy_baja']),
+            ctrl.Rule(caudal['bajo'] & turbiedad['media'], dosis['media']),
+            ctrl.Rule(caudal['medio'] & turbiedad['media'], dosis['media']),
+            ctrl.Rule(caudal['medio'] & turbiedad['alta'], dosis['alta']),
         ]
 
         sistema_ctrl = ctrl.ControlSystem(rules)
