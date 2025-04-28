@@ -297,7 +297,23 @@ if historial.empty:
     st.info("No hay datos históricos registrados.")
 else:
     st.dataframe(historial, use_container_width=True)
-
-# --- Footer ---
-st.markdown("---")
-st.caption("Desarrollado por MSc. Ever Rojas Huamán | Universidad Nacional de Cajamarca | 2025")
+# --- Pie de página correcto ---
+st.markdown(
+    """
+    <div style='background-color: #003366; padding: 1.5rem; border-radius: 0.75rem; margin-top: 3rem; text-align: center; color: white; font-size: 1rem;'>
+        <div style='font-weight: 600; margin-bottom: 0.5rem;'>Sistema de Dosificación Óptima de Sulfato de Aluminio</div>
+        <div style='display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem; margin-top: 1rem; margin-bottom: 1rem;'>
+            <div>
+                <div style='font-size: 0.9rem; color: rgba(255,255,255,0.8);'>Investigador Principal</div>
+                <div style='font-size: 1.1rem; font-weight: 500;'>MSc. Ever Rojas Huamán</div>
+            </div>
+            <div>
+                <div style='font-size: 0.9rem; color: rgba(255,255,255,0.8);'>Asesor de Investigación</div>
+                <div style='font-size: 1.1rem; font-weight: 500;'>Dr. Glicerio Eduardo Torres Carranza</div>
+            </div>
+        </div>
+        <div style='font-size: 0.9rem; opacity: 0.9;'>Universidad Nacional de Cajamarca • Escuela de Posgrado • 2025</div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
