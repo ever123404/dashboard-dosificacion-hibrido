@@ -292,9 +292,20 @@ with st.form(key="formulario_parametros"):
 if submit:
     with st.spinner("Calculando dosis óptima..."):
         try:
+            # --- Cálculo completo ---
+            # Obtener la dosis sugerida final (ponderada) y el método
             dosis_sugerida, metodo, confianza = modelo_hibrido.predecir_dosis(turbidez, ph, caudal)
-            dosis_sugerida = max(dosis_sugerida, 0)
 
+            # Obtener también las dosis individuales
+            dosis_splines, confianza_splines, _ = modelo_hibrido._predecir_con_splines(turbidez, caudal)
+            dosis_fuzzy, confianza_fuzzy = modelo_hibrido._predecir_con_fuzzy(turbidez, ph, caudal)
+
+            # Asegurar que las dosis no sean negativas
+            dosis_sugerida = max(dosis_sugerida, 0)
+            dosis_splines = max(dosis_splines, 0)
+            dosis_fuzzy = max(dosis_fuzzy, 0)
+
+            # Clasificación de categoría
             if turbidez < 10:
                 categoria = "Turbidez Baja"
                 color_categoria = COLOR_ADVERTENCIA
@@ -305,15 +316,24 @@ if submit:
                 categoria = "Turbidez Normal"
                 color_categoria = COLOR_EXITO
 
-            if guardar_historial:
-                guardar_resultado_historial(turbidez, ph, caudal, dosis_sugerida, metodo, categoria)
+            # Guardar en historial completo
+            guardar_resultado_historial(
+                turbidez,
+                ph,
+                caudal,
+                dosis_splines,
+                dosis_fuzzy,
+                dosis_sugerida,
+                metodo,
+                categoria
+            )
 
+            # --- Mostrar resultado en pantalla ---
             st.success(f"Dosis sugerida: {dosis_sugerida:.2f} mg/L")
             st.info(f"Método utilizado: {metodo} (confianza: {confianza:.2f})")
 
         except Exception as e:
             st.error(f"Error en el cálculo: {str(e)}")
-
 # --- Mostrar historial ---
 st.header("📈 Historial de Cálculos y Tendencias")
 historial = cargar_historial()
