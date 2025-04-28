@@ -229,7 +229,7 @@ def load_data():
 
     return data.dropna(subset=['turbiedad', 'caudal', 'dosis_mg_l'])
 
-def guardar_resultado_historial(turbidez, ph, caudal, dosis_sugerida, metodo, categoria):
+def guardar_resultado_historial(turbidez, ph, caudal, dosis_splines, dosis_fuzzy, dosis_sugerida, metodo, categoria):
     ahora = datetime.now()
     nuevo = pd.DataFrame({
         'fecha': [ahora.strftime('%Y-%m-%d')],
@@ -237,6 +237,8 @@ def guardar_resultado_historial(turbidez, ph, caudal, dosis_sugerida, metodo, ca
         'turbidez': [turbidez],
         'ph': [ph],
         'caudal': [caudal],
+        'dosis_splines': [dosis_splines],
+        'dosis_fuzzy': [dosis_fuzzy],
         'dosis_mg_l': [dosis_sugerida],
         'metodo_calculo': [metodo],
         'categoria': [categoria]
